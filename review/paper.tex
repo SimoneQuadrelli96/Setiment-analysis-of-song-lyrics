@@ -37,7 +37,7 @@
 The hereby paper addresses the challenge of detecting emotions and their intensity from the text of tweets via machine learning and aims to transfer the prediction capabilities to predict songs emotions and their intensity from the lyrics. These information allows to fathom the existence of correlations between musical genres and sentiments and between authors and sentiments.\\
 
 Emotion detection has a widespread applications in many fields: it is used in marketing to tune and evaluate advertisement, it is exploited to monitor elections and the preference of voters and it is part of music recommendation systems in many streaming applications. 
-Despite emotion detection being increasingly used in many field, still some remarkable issues remain. There is disagreement about the way sentiment should be measured: some suggest to use valence, arousal, and dominance features, others prefer to use simple categorical variables. Moreover, there are few reliable datasets for emotion detection in song lyrics and just some of them have a suitable dimension for supervised learning. Indeed, a very small dataset, consisting in less than two hundred songs has been constructed by R. Malheiro et al. in \cite{musicmood}. Another issues concerns the emotions to be used: if the number of emotions (or moods) is too big then the subjectivity of annotators may be too much and they should be clustered into wider emotions, if just positive or negative moods are involved, as in \cite{musicmood1}, they may be too few to be significant. In the end, for music recommendation systems using just lyrics may not be enough and the melody should be equally taken into account. \\
+Despite emotion detection being increasingly used in many field, still some remarkable issues remain. There is disagreement about the way sentiment should be measured: some suggest to use valence, arousal, and dominance features, others prefer to use simple categorical variables. Moreover, there are few reliable datasets for emotion detection and just some of them have a suitable dimension for supervised learning. Indeed, a very small dataset, consisting in less than two hundred songs has been constructed by R. Malheiro et al. in \cite{musicmood}. Another issues concerns the emotions to be used: if the number of emotions (or moods) is too big then the subjectivity of annotators may be too much and they should be clustered into wider emotions, if just positive or negative moods are involved, as in \cite{musicmood1}, they may be too few to be significant. In the end, for music recommendation systems using just lyrics may not be enough and the melody should be equally taken into account. \\
 
 
 
@@ -92,7 +92,7 @@ From this two quantities it is possible to obtain tf-idf weights as
 \end{equation}
 After the weights have been computed the python object that computes the transformation is saved to be later used to extract the weights from song lyrics. \\
 
-Before proceeding to the model selection, there is issues tackle: the dataset is unbalanced; indeed, the class fear has higher frequency than the other ones. To prevent classifiers from predicting too many instances of class fear, an oversample procedure is applied. Hence, the final dataset is perfectly balanced. \\
+Before proceeding to the model selection, there is issues tackle: the dataset is unbalanced; indeed, the class \textit{fear} has higher frequency than the other ones. To prevent classifiers from predicting too many instances of class \textit{fear}, an oversample procedure is applied. Hence, the final dataset is perfectly balanced. \\
 There is also choice to make when deciding how to handle the prediction task: either train predictors that output sentiment and intensity together or a  classifier for the sentiment and an independent predictor for the intensity. Since the correlation between sentiment and emotion, computed by Spearman's correlation test, is very close to zero, the latter approach seems a valid and much simpler option. Hence, there two different problems arise: it is necessary to select the best classification model for the sentiment and the best regression model for the intensity. For classification, the best model was selected accordingly to the cross-validated F1-score among K-nearest neighbours (KNN), random forests (RF) and SVMs. Analogously the best regression model was selected accordingly to the cross-validated mean absolute error among the previous classes modified for regression models. This procedure is performed two times using as features POS lemma and POS raw text. 
 
 \begin{table}[H]
@@ -150,7 +150,7 @@ As previously stated, one objective of this work is to understand whether or not
     \centering
     \begin{tabular}{|c |c |c|c|} 
      \hline
-     Anger & Joy & Fear  & Sadness\\ [0.5ex] 
+     Anger & Fear & Joy  & Sadness\\ [0.5ex] 
      \hline
      0.17 & 0.32 & 0.26  & 0.25 \\ 
      \hline
